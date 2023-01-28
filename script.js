@@ -10,6 +10,8 @@ let playedCardsField = document.getElementById("played_cards");
 let info = document.getElementById("info");
 let rel = document.getElementById("reload");
 
+let congratDiv = document.getElementById("congrat");
+
 info.innerHTML = "Take the card!";
 
 function shuffle(arr) {
@@ -48,7 +50,10 @@ function showCards(cards) {
 
 function checkWin(who, card) {
   info.innerHTML = who + " take " + card;
+
   if (card == "Q") {
+    congratDiv.classList.remove("visibile");
+    congratDiv.innerHTML = who + " win!";
     info.innerHTML = who + " win!";
     stop();
     fly();
