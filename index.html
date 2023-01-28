@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .card {
+        border-radius: 10%;
+        position: relative;
+        display: inline-block;
+        top: 0;
+        left: 0;
+        width: 80px;
+        height: 120px;
+        border: solid 2px YellowGreen;
+        background-color: rgb(228, 225, 69);
+        padding: 20px;
+        margin: 10px;
+        box-sizing: border-box;
+        text-align: center;
+        font-size: 40px;
+        color: darkolivegreen;
+        transition: all 1s;
+      }
+
+      #real_cards,
+      #played_cards {
+        min-height: 300px;
+        z-index: 2;
+      }
+      #real_cards {
+        border: 1px solid YellowGreen;
+        background-color: YellowGreen;
+      }
+
+      #real_cards .card {
+        background-image: radial-gradient(
+            closest-side,
+            transparent 0%,
+            transparent 75%,
+            #b6cc66 76%,
+            #b6cc66 85%,
+            #edffdb 86%,
+            #edffdb 94%,
+            #ffffff 95%,
+            #ffffff 103%,
+            #d9e6a7 104%,
+            #d9e6a7 112%,
+            #798b3c 113%,
+            #798b3c 121%,
+            #ffffff 122%,
+            #ffffff 130%,
+            #e0ead7 131%,
+            #e0ead7 140%
+          ),
+          radial-gradient(
+            closest-side,
+            transparent 0%,
+            transparent 75%,
+            #b6cc66 76%,
+            #b6cc66 85%,
+            #edffdb 86%,
+            #edffdb 94%,
+            #ffffff 95%,
+            #ffffff 103%,
+            #d9e6a7 104%,
+            #d9e6a7 112%,
+            #798b3c 113%,
+            #798b3c 121%,
+            #ffffff 122%,
+            #ffffff 130%,
+            #e0ead7 131%,
+            #e0ead7 140%
+          );
+        background-size: 40px 40px;
+        background-color: #c8d3a7;
+        background-position: 0 0, 20px 20px;
+      }
+
+      #real_cards span {
+        display: none;
+      }
+
+      #played_cards {
+        border: 1px solid green;
+        background-color: green;
+        z-index: 1;
+        overflow: hidden;
+      }
+
+      .effect {
+        /* height: 0; */
+        opacity: 0;
+        transition: all 1s;
+        transform: translateY(100%);
+      }
+
+      .move {
+        top: 280px;
+        transition: all 0.2s;
+      }
+
+      .rotate {
+        transition: all 3s ease;
+        opacity: 0;
+        transform: translate(500px, 800px) rotate(3600deg);
+      }
+
+      #win {
+        position: absolute;
+        display: none;
+        width: 40%;
+        top: 20%;
+        left: 30%;
+        height: 60%;
+        background-color: gold;
+        color: darkolivegreen;
+        text-align: center;
+        font-size: 60px;
+        z-index: 9999;
+        opacity: 0;
+        box-sizing: border-box;
+        padding-top: 10%;
+        border: 2px solid darkolivegreen;
+        transition: all 3s;
+      }
+      #wrap {
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      <div id="info"></div>
+      <button id="reload">Reload</button>
+      <div id="cards"></div>
+      <div id="real_cards"></div>
+      <div
+        id="played_cards"
+        ondragover="allowDrop(event)"
+        ondrop="drop(event)"
+      ></div>
+    </div>
+    <script src="./script.js"></script>
+  </body>
+</html>
