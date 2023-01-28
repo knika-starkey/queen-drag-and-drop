@@ -131,7 +131,7 @@ function newPlay() {
 function generateCards(cards, cardsF, s) {
   cardsF.innerHTML = "";
   for (let i = 0; i < cards.length; i++) {
-    cardsF.innerHTML += `<div id="rc_${i}${s}" class="card " draggable="true" ondragstart="drag(event)"><span>${cards[i]}</span></div>`;
+    cardsF.innerHTML += `<div id="rc_${i}${s}" class="card" draggable="true" ondragstart="drag(event)"><span>${cards[i]}</span></div>`;
   }
 }
 function addEventCardList() {
