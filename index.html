@@ -6,6 +6,7 @@
     <title>Document</title>
     <style>
       .card {
+        word-wrap: break-word;
         border-radius: 10%;
         position: relative;
         display: inline-block;
@@ -15,14 +16,27 @@
         height: 120px;
         border: solid 2px YellowGreen;
         background-color: rgb(228, 225, 69);
-        padding: 20px;
+        padding: 5px;
         margin: 10px;
         box-sizing: border-box;
+        font-size: 30px;
+        list-style: 100%;
         text-align: center;
-        font-size: 40px;
+        justify-content: center;
+        align-items: center;
         color: darkolivegreen;
         transition: all 1s;
+
         box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.24);
+      }
+      .small-letters {
+        line-height: 60%;
+      }
+      .midium-letters {
+        line-height: 80%;
+      }
+      .big-letters {
+        line-height: 100%;
       }
       .card:hover {
         box-shadow: 0px 8px 10px 1px rgba(0, 0, 0, 0.2);
@@ -158,8 +172,8 @@
     </style>
   </head>
   <body>
+    <div id="congrat" class="visibile"></div>
     <div id="wrap">
-      <div id="congrat" class="visibile"></div>
       <div id="info"></div>
       <button id="reload">Reload</button>
       <div id="cards"></div>

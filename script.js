@@ -55,6 +55,7 @@ function checkWin(who, card) {
     congratDiv.classList.remove("visibile");
     congratDiv.innerHTML = who + " win!";
     info.innerHTML = who + " win!";
+
     stop();
     fly();
     return true;
@@ -132,11 +133,47 @@ function newPlay() {
   location.reload();
   return false;
 }
+function tidy(symbol) {
+  switch (symbol) {
+    case "2":
+      return "&#9824;<br><br>&#9824;";
+    case "3":
+      return "&#9824;<br>&#9824;<br>&#9824;";
+    case "4":
+      return "&#9824; &#9824;<br><br>&#9824; &#9824;";
+    case "5":
+      return "&#9824; &#9824;<br>&#9824;<br>&#9824; &#9824;";
+    case "6":
+      return "&#9824; &#9824;<br>&#9824; &#9824;<br>&#9824; &#9824;";
+    case "7":
+      return "&#9824; &#9824;<br>&#9824;<br>&#9824; &#9824;<br>&#9824; &#9824;";
+    case "8":
+      return "&#9824; &#9824;<br>&#9824;<br>&#9824; &#9824;<br>&#9824;<br>&#9824; &#9824;";
+    case "9":
+      return "&#9824; &#9824;<br>&#9824; &#9824;<br>&#9824;<br>&#9824; &#9824;<br>&#9824; &#9824;";
+    case "10":
+      return "&#9824; &#9824;<br>&#9824;<br>&#9824; &#9824;<br>&#9824; &#9824;<br>&#9824;<br>&#9824; &#9824;";
 
+    default:
+      return `&#9824;<br>${symbol}<br>&#9824;`;
+  }
+  //   return isNaN(symbol) ? `&#9824; ${symbol} &#9824;` : "&#9824;".repeat(symbol);
+}
+function whatText(symbol) {
+  if (isNaN(symbol)) return "big-letters";
+  symbol = +symbol;
+  if (symbol <= 6) return "big-letters";
+  else if (symbol <= 7 && symbol > 6) return "midium-letters";
+  else return "small-letters";
+}
 function generateCards(cards, cardsF, s) {
   cardsF.innerHTML = "";
   for (let i = 0; i < cards.length; i++) {
-    cardsF.innerHTML += `<div id="rc_${i}${s}" class="card" draggable="true" ondragstart="drag(event)"><span>${cards[i]}</span></div>`;
+    cardsF.innerHTML += `<div id="rc_${i}${s}" class="card ${whatText(
+      cards[i]
+    )}" draggable="true" ondragstart="drag(event)"><span>${tidy(
+      cards[i]
+    )}</span></div>`;
   }
 }
 function addEventCardList() {
