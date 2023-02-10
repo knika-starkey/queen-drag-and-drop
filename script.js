@@ -4,7 +4,7 @@ let playedCards = [];
 
 let number = 0;
 let isGame = true;
-let cardsField = document.getElementById("cards");
+// let cardsField = document.getElementById("cards");
 let realCards = document.getElementById("real_cards");
 let playedCardsField = document.getElementById("played_cards");
 let info = document.getElementById("info");
@@ -27,7 +27,7 @@ function shuffle(arr) {
 
 shuffle(cards);
 
-cardsField.innerHTML = cards;
+// cardsField.innerHTML = cards;
 
 function allowDrop(event) {
   event.preventDefault();
@@ -50,14 +50,16 @@ function showCards(cards) {
 
 function checkWin(who, card) {
   info.innerHTML = who + " take " + card;
-
   if (card == "Q") {
     congratDiv.classList.remove("visibile");
     congratDiv.innerHTML = who + " win!";
     info.innerHTML = who + " win!";
 
+    //fly();
+    let number = cards.findIndex(() => card == "Q");
+    setTimeout(removeCard.bind(null, number), 50);
     stop();
-    fly();
+    setTimeout(fly, 200);
     return true;
   }
   return false;
@@ -91,6 +93,7 @@ function myMove(elId) {
     setTimeout(removeCard.bind(null, number), 200);
     isGame = true;
   }
+
   return b;
 }
 function computerMove() {
@@ -113,7 +116,7 @@ function computerMove() {
 function removeCard(number) {
   playedCards.push(cards[number]);
   cards.splice(number, 1);
-  cardsField.innerHTML = cards;
+  //   cardsField.innerHTML = cards;
   generateCards(cards, realCards, "");
   generateCards(playedCards, playedCardsField, "p");
   addEventCardList();
